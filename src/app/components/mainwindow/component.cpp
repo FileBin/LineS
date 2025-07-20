@@ -1,17 +1,13 @@
-#include "decl.hpp"
+#include "mainwindow.hpp"
 #include "core.hpp"
 
+#include "../canvas/canvas.hpp"
 // This is the crucial include for the auto-generated UI code
+#include "qsizepolicy.h"
 #include "ui_mainwindow.h" // uic will generate this in the build directory
 #include <QDebug>
 #include <QHBoxLayout> // For layout management
 #include <cstdint>
-
-// Declarations for Rust functions
-extern "C" {
-    void greet_from_rust();
-    int add_numbers(int a, int b);
-}
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -19,7 +15,11 @@ MainWindow::MainWindow(QWidget *parent)
 {
     // Set up the UI from the generated code
     ui->setupUi(this);
-    button_text = ui->myButton->text();
+
+    auto canvas_old = ui->canvas;
+    ui->canvas = new Canvas(canvas_old->parentWidget());
+    ui->horizontalLayout->replaceWidget(canvas_old, ui->canvas);
+    delete canvas_old;
     // Now, access widgets via the 'ui' pointer
     // ui->myButton->setText("Click Me (No Qt Creator)!");
 
@@ -41,5 +41,5 @@ void MainWindow::on_myButton_clicked(bool checked)
 {
     qDebug() << "Button clicked from Qt UI (no Qt Creator)!";
     int32_t counter = lines_core_increment_counter();
-    ui->myButton->setText(button_text.arg(counter));
+    // ui->myButton->setText(button_text.arg(counter));
 }

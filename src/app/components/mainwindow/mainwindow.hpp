@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "components/canvas/canvas.hpp"
 #include "qobject.h"
 #include <QMainWindow>
 
