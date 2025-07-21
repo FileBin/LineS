@@ -2,7 +2,6 @@
 #define MAINWINDOW_H
 
 #include "components/canvas/canvas.hpp"
-#include "qobject.h"
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE

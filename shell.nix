@@ -1,14 +1,13 @@
 with (import <nixpkgs> {  });
 mkShell {
     buildInputs =
-    with kdePackages; [
+    (with kdePackages; pkgs.lib.optionals pkgs.stdenv.isLinux [
         qtbase
         qtdeclarative
         qttools
         qtsvg
         qtimageformats
         qtshadertools
-        qtwayland
         qtmultimedia
         qtserialport
         qtwebsockets
@@ -16,7 +15,8 @@ mkShell {
         qtcharts
         qtdatavis3d
         qttools
-    ] ++ [
+        qtwayland
+    ]) ++ [
         # builder
         meson
         mesonlsp
@@ -64,4 +64,7 @@ mkShell {
             ];
         })
     ];
+    shellHook = ''
+        export PKG_CONFIG_PATH_FOR_TARGET="$PKG_CONFIG_PATH_FOR_TARGET:/opt/homebrew/opt/qt/lib/pkgconfig"
+    '';
 }
