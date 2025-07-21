@@ -40,6 +40,4 @@ MainWindow::~MainWindow()
 void MainWindow::on_myButton_clicked(bool checked)
 {
     qDebug() << "Button clicked from Qt UI (no Qt Creator)!";
-    int32_t counter = lines_core_increment_counter();
-    // ui->myButton->setText(button_text.arg(counter));
 }

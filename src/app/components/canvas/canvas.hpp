@@ -20,7 +20,7 @@ protected:
     void paintGL() override;
     QOpenGLShaderProgram *shaderProgram;
     QOpenGLBuffer vbo;
-    QOpenGLBuffer ebo; 
+    QOpenGLBuffer ebo;
 };
 
 #endif // CANVAS_H

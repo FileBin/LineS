@@ -1,7 +1,5 @@
 pub mod bindings;
 
-struct Core {
-    counter: i32,
+pub struct Core {
+    background_color: color::Rgba8,
 }
-
-pub static mut Core: Core = Core { counter: 0 };

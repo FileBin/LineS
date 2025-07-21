@@ -8,3 +8,4 @@ crate-type = ["staticlib"]
 path = "core.rs"
 
 [dependencies]
+color = "0.3.1"

@@ -1,6 +1,10 @@
+#include "core.hpp"
+
 #include "canvas.hpp"
 #include "canvas.hpp"
 #include <QDebug>
+
+extern Core* core;
 
 Canvas::Canvas(QWidget *parent)
     : QOpenGLWidget(parent),
@@ -90,7 +94,9 @@ void Canvas::resizeGL(int w, int h) {
 }
 
 void Canvas::paintGL() {
-    glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+    Rgba8 bgColor;
+    lines_core_get_bg_color(core, &bgColor);
+    glClearColor(bgColor.r/255.f, bgColor.g/255.f, bgColor.b/255.f, bgColor.a/255.f);
     glClear(GL_COLOR_BUFFER_BIT);
 
     shaderProgram->bind();

@@ -3,6 +3,6 @@
     "C_Cpp.default.compileCommands": "${workspaceFolder}/builddir/compile_commands.json",
     "C_Cpp.intelliSenseEngine": "disabled",
     "rust-analyzer.linkedProjects": [
-        "${workspaceFolder}/builddir/rust-project.json"
-    ],
+        "${workspaceFolder}/src/core/Cargo.toml"
+    ]
 }

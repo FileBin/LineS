@@ -2,9 +2,20 @@ core_src = [ 'core.rs', 'bindings.rs' ]
 
 core_c_bindings = include_directories('.', join_paths('.', 'bindings'))
 
-run_command('cbindgen', 'bindings.rs' , '-l', 'c','-o', 'bindings/core.h')
-run_command('cbindgen', 'bindings.rs' , '-l', 'c++','-o', 'bindings/core.hpp')
+r = run_command('pwd')
+message(r.stdout())
 
+
+r = run_command('cbindgen', '--config', 'cbindgen.toml', '-l', 'c','-o', 'bindings/core.h')
+if r.returncode() != 0
+  warning('Command failed')
+  message(r.stderr().strip())
+endif
+r = run_command('cbindgen',  '--config', 'cbindgen.toml', '-l', 'c++','-o', 'bindings/core.hpp')
+if r.returncode() != 0
+  warning('Command failed')
+  message(r.stderr().strip())
+endif
 sub_cmesoncargo = subproject('meson-cargo')
 
 #

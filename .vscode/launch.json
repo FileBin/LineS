@@ -14,7 +14,8 @@
             "cwd": "${fileDirname}",
             "environment": [],
             "externalConsole": false,
-            "MIMode": "lldb"
+            "MIMode": "lldb",
+            "preLaunchTask": "Meson: Build src/app/qt-app:executable",
         },
         {
             "name": "(gdb) Launch",
