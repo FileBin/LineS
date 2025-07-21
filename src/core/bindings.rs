@@ -1,6 +1,6 @@
 use crate::Core;
 
-#[no_mangle]
+#[unsafe(no_mangle)]
 pub extern "C" fn lines_core_increment_counter() -> i32 {
     unsafe {
         Core.counter+=1;

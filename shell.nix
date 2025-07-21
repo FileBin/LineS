@@ -1,6 +1,7 @@
 with (import <nixpkgs> {  });
 mkShell {
     buildInputs =
+    # nix qt does not work well on darwin so it should be installed via homebrew
     (with kdePackages; pkgs.lib.optionals pkgs.stdenv.isLinux [
         qtbase
         qtdeclarative
@@ -64,6 +65,7 @@ mkShell {
             ];
         })
     ];
+    # TODO: this should export only on darwin
     shellHook = ''
         export PKG_CONFIG_PATH_FOR_TARGET="$PKG_CONFIG_PATH_FOR_TARGET:/opt/homebrew/opt/qt/lib/pkgconfig"
     '';

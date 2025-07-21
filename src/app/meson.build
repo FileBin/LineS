@@ -24,7 +24,6 @@ qtprocessed = qt.preprocess(moc_headers: qt_moc_headers,
 exe_app = executable('qt-app',
   sources: [app_sources, qtprocessed],
   include_directories: app_include,
-  dependencies: qt_dep, # Link against Qt
-  link_with: [lib_core], # Link with the Rust library
+  dependencies: [qt_dep, lib_core_dep], # Link against Qt
   install : true
 )
